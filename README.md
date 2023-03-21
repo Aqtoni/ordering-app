@@ -1,8 +1,9 @@
-# NestJS MongoDB RabbitMQ Swagger Docker
+# NestJS MongoDB RabbitMQ  Docker
 
 A microservices application using RabbitMQ as our message broker
 Application based on NestJS, where MongoDB a database.
 All this is packed in Docker-Compose, in Docker we use bitnami/mongodb.
+All the most interesting is in the documentation. 📗
 
 <table width="100%">
   <tr>
@@ -49,7 +50,7 @@ All this is packed in Docker-Compose, in Docker we use bitnami/mongodb.
 
 ## API Usage
 
-Check [Ordering API Documentation](https://documenter.getpostman.com/view/25263444/2s93RKzFtj) for more info.
+Check [Orders API Documentation](https://documenter.getpostman.com/view/25263444/2s93RKzFtj) for more info.
 
 ## Installation and launch method
 
