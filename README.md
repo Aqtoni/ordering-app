@@ -1,4 +1,4 @@
-# NestJS MongoDB RabbitMQ Docker
+# NestJS MongoDB RabbitMQ Swagger Docker
 
 A microservices application using RabbitMQ as our message broker
 Application based on NestJS, where MongoDB a database.
@@ -15,7 +15,7 @@ All this is packed in Docker-Compose, in Docker we use bitnami/mongodb.
     </td>
     <td align="center" valign="middle" width="17%">
       <a href="https://www.mongodb.com/">
-      <img height="50" alt="PostgresSQL" src="https://w7.pngwing.com/pngs/429/921/png-transparent-mongodb-plain-wordmark-logo-icon-thumbnail.png"/>
+      <img height="50" alt="PostgresSQL" src="https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg"/>
       </a>
       <br />
       MongoDB
@@ -29,7 +29,7 @@ All this is packed in Docker-Compose, in Docker we use bitnami/mongodb.
     </td>
     <td align="center" valign="middle" width="17%">
       <a href="https://www.docker.com/">
-      <img height="50" alt="Docker" src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png"/>
+      <img height="50" alt="Docker" src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"/>
       </a>
       <br />
       Docker
@@ -39,8 +39,17 @@ All this is packed in Docker-Compose, in Docker we use bitnami/mongodb.
 
 ## Key Features
 
+- Authentication and Authorization
+  - Registration, create user
+  - Login
 - Orders
   - Create a orders with fields product name price and phone number
+  - Update order
+  - Delete order
+
+## API Usage
+
+Check [Ordering API Documentation](https://documenter.getpostman.com/view/25263444/2s93RKzFtj) for more info.
 
 ## Installation and launch method
 
@@ -51,6 +60,9 @@ MONGODB_URI=mongodb://root:password123@mongodb-primary:27017/
 PORT=3000
 RABBIT_MQ_URI=amqp://rabbitmq:5672
 RABBIT_MQ_BILLING_QUEUE=billing
+JWT_EXPIRATION=3600
+JWT_SECRET=you-super-secret😏
+RABBIT_MQ_AUTH_QUEUE=auth
 ```
 
 ## Using Docker

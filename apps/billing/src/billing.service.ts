@@ -10,4 +10,10 @@ export class BillingService {
   bill(data: any) {
     this.logger.log('Billing....', data);
   }
+  update(data: any) {
+    this.logger.log('Update....', data);
+  }
+  delete(data: any) {
+    this.logger.log('Delete....', data);
+  }
 }

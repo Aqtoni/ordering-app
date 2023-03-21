@@ -6,6 +6,7 @@ import {
   UpdateQuery,
   SaveOptions,
   Connection,
+  QueryOptions,
 } from 'mongoose';
 import { AbstractDocument } from './abstract.schema';
 
@@ -41,14 +42,16 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
     return document;
   }
 
-  async findOneAndUpdate(
+  async upset(
     filterQuery: FilterQuery<TDocument>,
     update: UpdateQuery<TDocument>,
+    options: QueryOptions = { lean: true, new: true },
   ) {
-    const document = await this.model.findOneAndUpdate(filterQuery, update, {
-      lean: true,
-      new: true,
-    });
+    const document = await this.model.findOneAndUpdate(
+      filterQuery,
+      update,
+      options,
+    );
 
     if (!document) {
       this.logger.warn(`Document not found with filterQuery:`, filterQuery);
@@ -71,6 +74,21 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
 
   async find(filterQuery: FilterQuery<TDocument>) {
     return this.model.find(filterQuery, {}, { lean: true });
+  }
+
+  async delete(
+    filterQuery: FilterQuery<TDocument>,
+    options: QueryOptions = { lean: true, new: true },
+  ) {
+    const deletedDocument = await this.model.findOneAndDelete(
+      filterQuery,
+      options,
+    );
+    if (!deletedDocument) {
+      this.logger.warn(`Document not found with filterQuery:`, filterQuery);
+      throw new NotFoundException('Document not found.');
+    }
+    return deletedDocument;
   }
 
   async startTransaction() {
